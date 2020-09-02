@@ -5,8 +5,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * @author ignohh
- * @date 2020-09-02 9:33
  * 处理服务端
  */
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {

@@ -11,8 +11,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * @author ignohh
- * @date 2020-09-02 9:51
  */
 public class DiscardServer {
 
