@@ -1,6 +1,6 @@
-package com.example.netty;
+package com.example.netty.server;
 
-import com.example.netty.handler.DiscardServerHandler;
+import com.example.netty.handler.TimeServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,11 +10,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class DiscardServer {
+public class TimeServer {
 
     private int port;
 
-    public DiscardServer(int port) {
+    public TimeServer(int port) {
         this.port = port;
     }
 
@@ -44,8 +44,8 @@ public class DiscardServer {
                     // 当你的程序变的复杂时，可能你会增加更多的处理类到 pipline 上，然后提取这些匿名类到最顶层的类上
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new DiscardServerHandler());
+                        public void initChannel(SocketChannel ch) {
+                            ch.pipeline().addLast(new TimeServerHandler());
                         }
                     })
                     // 你可以设置这里指定的 Channel 实现的配置参数。我们正在写一个TCP/IP 的服务端，
@@ -79,6 +79,6 @@ public class DiscardServer {
         } else {
             port = 8080;
         }
-        new DiscardServer(port).run();
+        new TimeServer(port).run();
     }
 }
