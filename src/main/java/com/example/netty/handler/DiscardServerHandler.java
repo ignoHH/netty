@@ -10,6 +10,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * 处理服务端
  */
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ((ByteBuf) msg).release();
