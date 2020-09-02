@@ -11,6 +11,14 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  */
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
 
+    /*@Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        try {
+            // Do something with msg
+        } finally {
+            ReferenceCountUtil.release(msg);
+        }
+    }*/
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ((ByteBuf) msg).release();
