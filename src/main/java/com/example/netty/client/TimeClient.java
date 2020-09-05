@@ -1,6 +1,8 @@
 package com.example.netty.client;
 
 import com.example.netty.handler.TimeClientHandler;
+import com.example.netty.handler.TimeDecoder;
+import com.example.netty.handler.TimeServerHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -30,8 +32,8 @@ public class TimeClient {
             b.option(ChannelOption.SO_KEEPALIVE, true);
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
-                public void initChannel(SocketChannel ch) {
-                    ch.pipeline().addLast(new TimeClientHandler());
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(new TimeDecoder(), new TimeClientHandler());
                 }
             });
 
