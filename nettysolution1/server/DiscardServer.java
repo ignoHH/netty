@@ -1,6 +1,5 @@
 package com.example.netty.server;
 
-import com.example.netty.handler.DiscardServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

@@ -25,13 +25,6 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         //在TCP/IP中，Netty 会把读到的数据放到 ByteBuf 的数据结构中
         ByteBuf m = (ByteBuf) msg;
-        /*try {
-            long currentTimeMillis = (m.readUnsignedInt() - 2208988800L) * 1000L;
-            System.out.println(new Date(currentTimeMillis));
-            ctx.close();
-        } finally {
-            m.release();
-        }*/
         //首先，所有接收的数据都应该被累积在 buf 变量里
         buf.writeBytes(m);
         m.release();
