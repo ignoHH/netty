@@ -19,15 +19,11 @@ public class TimeServer {
     }
 
     public void run() throws Exception {
-        //NioEventLoopGroup 是用来处理I/O操作的多线程事件循环器
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            //ServerBootstrap 是一个启动 NIO 服务的辅助启动类。
-            //你可以在这个服务中直接使用 Channel，但是这会是一个复杂的处理过程，在很多情况下你并不需要这样做
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-                    // 这里我们指定使用 NioServerSocketChannel 类来举例说明一个新的 Channel 如何接收进来的连接
                     .channel(NioServerSocketChannel.class)
                     // 这里的事件处理类经常会被用来处理一个最近的已经接收的 Channel。
                     // ChannelInitializer 是一个特殊的处理类，他的目的是帮助使用者配置一个新的 Channel。
