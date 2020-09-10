@@ -11,9 +11,8 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 public class WebsocketChatServerInitializer extends
         ChannelInitializer<SocketChannel> {
     @Override
-    public void initChannel(SocketChannel ch) throws Exception {//2
+    public void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(64*1024));
         pipeline.addLast(new ChunkedWriteHandler());
